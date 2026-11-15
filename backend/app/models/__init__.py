@@ -21,6 +21,7 @@ from app.models.o2c import (
     StatusEvent,
 )
 from app.models.ground_truth import GroundTruthAnomaly
+from app.models.detection import ExceptionRecord, ExceptionEvidence
 
 __all__ = [
     "Base",
@@ -39,4 +40,6 @@ __all__ = [
     "InvoiceAdjustment",
     "StatusEvent",
     "GroundTruthAnomaly",
+    "ExceptionRecord",
+    "ExceptionEvidence",
 ]
