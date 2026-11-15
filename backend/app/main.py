@@ -50,7 +50,8 @@ def root_db_health(response: Response):
     return result
 
 
-# Mount API v1 router
+# Mount API routers (both /api and /api/v1 for backwards and frontend compatibility)
+app.include_router(api_router, prefix="/api")
 app.include_router(api_router, prefix="/api/v1")
 
 
