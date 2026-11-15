@@ -21,7 +21,21 @@ import {
 import { formatINR } from './utils/formatters';
 
 export function App() {
-  const [activeTab, setActiveTab] = useState<NavigationTab>('overview');
+  const getInitialTab = (): NavigationTab => {
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab') as NavigationTab;
+    if (['overview', 'exceptions', 'orders', 'invoices', 'payments', 'disputes'].includes(tabParam)) {
+      return tabParam;
+    }
+    return 'overview';
+  };
+
+  const getInitialExceptionId = (): string | null => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('exceptionId');
+  };
+
+  const [activeTab, setActiveTab] = useState<NavigationTab>(getInitialTab);
   const [dbConnected, setDbConnected] = useState<boolean>(true);
   const [exceptionCount, setExceptionCount] = useState<number>(0);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
@@ -34,7 +48,7 @@ export function App() {
   const [exceptionFilterAnomalyType, setExceptionFilterAnomalyType] = useState<string | undefined>();
 
   // Modal detail view
-  const [selectedExceptionId, setSelectedExceptionId] = useState<string | null>(null);
+  const [selectedExceptionId, setSelectedExceptionId] = useState<string | null>(getInitialExceptionId);
 
   // Global detection notification banner
   const [detectionNotice, setDetectionNotice] = useState<{
