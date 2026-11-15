@@ -217,11 +217,17 @@ flowchart TD
 
     UI --> APIClient
     APIClient -->|HTTP / JSON on Port 8000| FastAPIApp
-    FastAPIApp --> DashboardRouter & ExceptionsRouter & TransactionsRouter & DetectionRouter & HealthRouter
+    FastAPIApp --> DashboardRouter
+    FastAPIApp --> ExceptionsRouter
+    FastAPIApp --> TransactionsRouter
+    FastAPIApp --> DetectionRouter
+    FastAPIApp --> HealthRouter
     DetectionRouter --> Engine
     Engine --> Detectors
     Detectors --> ORM
-    DashboardRouter & ExceptionsRouter & TransactionsRouter --> ORM
+    DashboardRouter --> ORM
+    ExceptionsRouter --> ORM
+    TransactionsRouter --> ORM
     ORM -->|Psycopg Driver on Port 5432| PG
     Migrations -.->|Schema Versioning a862bb2a11e5| PG
     Generator -.->|Seeding Sequence| ORM
@@ -243,14 +249,14 @@ sequenceDiagram
     participant Engine as RevAssure Detection Engine
 
     Customer->>Sales: Request commercial quotation
-    Sales->>OMS: Quote accepted; Convert to Sales Order (CONFIRMED)
+    Sales->>OMS: Quote accepted - Convert to Sales Order (CONFIRMED)
     OMS->>WMS: Issue dispatch order
     WMS->>WMS: Pick, pack, and ship inventory (SHIPPED)
     WMS->>Billing: Transmit shipment fulfillment lines
     Billing->>Billing: Generate Invoice against fulfilled quantities (ISSUED)
     Billing->>Customer: Transmit billing invoice
     Customer->>Treasury: Remit payment via Wire / ACH / Check
-    Treasury->>Billing: Ingest remittance; Allocate payment to Invoice (PAID)
+    Treasury->>Billing: Ingest remittance - Allocate payment to Invoice (PAID)
     
     Note over Engine: Periodic or Triggered Assurance Scan
     Engine->>WMS: Audit actual shipped quantities
