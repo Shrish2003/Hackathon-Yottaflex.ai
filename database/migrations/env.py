@@ -6,8 +6,11 @@ from sqlalchemy import pool
 
 from alembic import context
 
-# Ensure app is discoverable on sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+# Ensure backend directory is discoverable on sys.path
+migrations_dir = os.path.dirname(__file__)
+backend_dir = os.path.abspath(os.path.join(migrations_dir, "..", "..", "backend"))
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
 
 from app.core.config import settings
 from app.db.database import Base, engine
