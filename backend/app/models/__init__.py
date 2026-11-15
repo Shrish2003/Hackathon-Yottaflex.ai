@@ -20,6 +20,7 @@ from app.models.o2c import (
     InvoiceAdjustment,
     StatusEvent,
 )
+from app.models.ground_truth import GroundTruthAnomaly
 
 __all__ = [
     "Base",
@@ -37,4 +38,5 @@ __all__ = [
     "Dispute",
     "InvoiceAdjustment",
     "StatusEvent",
+    "GroundTruthAnomaly",
 ]

@@ -1,0 +1,43 @@
+{
+  "manifest_version": "1.0.0",
+  "generated_at": "2026-11-15T11:41:00.676467+00:00",
+  "seed": 20261022,
+  "profile": "test",
+  "scale_factor": 0.01,
+  "simulation_as_of_date": "2026-10-31T23:59:59+00:00",
+  "execution_duration_seconds": 0.47,
+  "total_records_created": 2797,
+  "record_counts": {
+    "accounts": 10,
+    "quotes": 100,
+    "quote_lines": 243,
+    "sales_orders": 70,
+    "order_lines": 168,
+    "shipments": 75,
+    "shipment_lines": 179,
+    "invoices": 83,
+    "invoice_lines": 186,
+    "payments": 150,
+    "payment_allocations": 203,
+    "disputes": 5,
+    "invoice_adjustments": 1,
+    "status_events": 1288,
+    "ground_truth_anomalies": 36
+  },
+  "ground_truth_breakdown": {
+    "OVERBILLING_QUANTITY": 3,
+    "OVERBILLING_AMOUNT": 3,
+    "UNDERBILLING": 3,
+    "DUPLICATE_INVOICE": 3,
+    "DUPLICATE_PAYMENT_ALLOCATION": 3,
+    "EXCESSIVE_PAYMENT_ALLOCATION": 3,
+    "PREMATURE_ORDER_CLOSURE": 3,
+    "INVALID_STATUS_TRANSITION": 3,
+    "DISPUTE_AR_DISCONNECT": 3,
+    "SHORT_PAYMENT": 3,
+    "SLA_AGING_BREACH": 3,
+    "OVERDUE_UNPAID_INVOICE": 3
+  },
+  "total_injected_leakage_inr": 7223888.5,
+  "dataset_checksum_sha256": "a83dce69f494b5eb56f2d31cd196f00b96378a394114b244a6d43a33113e9714"
+}

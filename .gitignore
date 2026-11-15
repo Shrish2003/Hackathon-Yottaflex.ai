@@ -41,3 +41,4 @@ Thumbs.db
 # Database / Local Run data
 *.sqlite3
 *.log
+backend/app/generators/outputs/csv/
